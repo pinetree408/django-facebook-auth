@@ -88,7 +88,8 @@ AUTHENTICATION_BACKENDS = (
 		'Auth_Login.backends.FacebookBackend',
 		)
 LOGIN_URL = '/login/'
+
 import facebookinfo
 FACEBOOK_APP_ID = facebookinfo.FACEBOOK_APP_ID
 FACEBOOK_APP_SECRET = facebookinfo.FACEBOOK_APP_SECRET
-FACEBOOK_REDIRECT_URI = 'http://localhost:8080/login/'
+FACEBOOK_REDIRECT_URI = 'http://localhost:8000/login/'
