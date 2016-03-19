@@ -1,10 +1,9 @@
 from django.conf import settings
 from django.contrib.auth import models as auth_models
-
+from models import FacebookSession
 import cgi
 import urllib
 
-from models import FacebookSession
 
 class FacebookBackend:
 
@@ -14,21 +13,19 @@ class FacebookBackend:
             access_token=token,
         )
 
-	print "test"
         profile = facebook_session.query('me')
 
-	try:
+        try:
             user = auth_models.User.objects.get(username=profile['name'])
         except auth_models.User.DoesNotExist, e:
             user = auth_models.User(username=profile['name'])
-       	
+
         user.set_unusable_password()
 
-	user.email = profile['email']
-	user.first_name = profile['first_name']
-	user.last_name = profile['last_name']
-        
-	user.save()
+        user.email = profile['email']
+        user.first_name = profile['first_name']
+        user.last_name = profile['last_name']
+        user.save()
 
         try:
             FacebookSession.objects.get(uid=profile['id']).delete()
@@ -45,4 +42,4 @@ class FacebookBackend:
         try:
             return auth_models.User.objects.get(pk=user_id)
         except auth_models.User.DoesNotExist:
-            return None 
+            return None
