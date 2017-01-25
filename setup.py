@@ -8,7 +8,7 @@ def read(name):
     return open(path.join(path.dirname(__file__), name)).read()
 
 setup(
-    name='django-facebook-auth-manager',
+    name='django-facebook-auth-helper',
     version='0.1.0',
     description="Django implementation for Facebook authentication.",
     long_description=read("README.rst"),

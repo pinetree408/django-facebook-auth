@@ -1,4 +1,4 @@
-django facebook auth login
+django facebook auth helper
 ==========================
 Facebook auth login library based on Django
 class based structure
