@@ -18,21 +18,19 @@ setup(
     author='Sangyoon Lee',
     author_email='pinetree408@gmail.com',
     license='MIT License',
-
     install_requires=(
         'Django==1.7',
     ),
-
     classifiers=[
         'Framework :: Django',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
-        'Programming Language :: Python',
+        'Programming Language :: Python :: 2.7',
         'Topic :: Internet :: WWW/HTTP',
     ],
-
     packages=[
         'django_facebook_auth',
     ],
+    keywords='django facebook authentication',
 )
