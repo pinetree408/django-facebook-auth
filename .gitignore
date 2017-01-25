@@ -4,3 +4,7 @@ facebookinfo.py
 db.sqlite3
 migrations/
 venv/
+
+# Packages
+*.egg-info
+dist
