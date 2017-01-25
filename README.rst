@@ -11,22 +11,19 @@ Configuration
 Settings
 --------
 1. Add django_facebook_auth to INSTALLED_APPS
-.. code-block:: python
-
-  INSTALLED_APPS = (
-      'demo',
-  )
+   ::
+       INSTALLED_APPS = (
+           'demo',
+       )
 
 2. Add authentication backends to AUTHENTICATION_BACKENDS
-.. code-block:: python
-
-  AUTHENTICATION_BACKENDS = (
-      'django_facebook_auth.backends.FacebookBackend',
-  )
+   ::
+      AUTHENTICATION_BACKENDS = (
+          'django_facebook_auth.backends.FacebookBackend',
+      )
 
 3. Add facebook settings to settings.py
-.. code-block:: python
-
-  FACEBOOK_APP_ID = 704150899695055
-  FACEBOOK_APP_SECRET = '6632df15dddaafb2a65043f1b0871655'
-  FACEBOOK_REDIRECT_URI = 'http://localhost:8000/login/'
+   ::
+       FACEBOOK_APP_ID = 704150899695055
+       FACEBOOK_APP_SECRET = '6632df15dddaafb2a65043f1b0871655'
+       FACEBOOK_REDIRECT_URI = 'http://localhost:8000/login/'
