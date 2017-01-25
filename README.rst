@@ -13,7 +13,7 @@ Settings
    ::
 
        INSTALLED_APPS = (
-           'demo',
+           'django_facebook_auth',
        )
 
 2. Add authentication backends to AUTHENTICATION_BACKENDS

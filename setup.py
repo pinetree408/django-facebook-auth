@@ -9,7 +9,7 @@ def read(name):
 
 setup(
     name='django-facebook-auth-helper',
-    version='0.1.2',
+    version='0.1.3',
     description="Django implementation for Facebook authentication.",
     long_description=read("README.rst"),
     url="https://github.com/pinetree408/django-facebook-auth",
