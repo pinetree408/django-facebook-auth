@@ -10,7 +10,6 @@ def read(name):
 setup(
     name='django-facebook-auth-manager',
     version='0.1.0',
-    packages=find_packages(),
     description="Django implementation for Facebook authentication.",
     long_description=read("README.rst"),
     url="https://github.com/pinetree408/django-facebook-auth",
@@ -31,5 +30,9 @@ setup(
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Topic :: Internet :: WWW/HTTP',
+    ],
+
+    packages=[
+        'django-facebook-auth',
     ],
 )
