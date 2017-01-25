@@ -33,6 +33,6 @@ setup(
     ],
 
     packages=[
-        'django-facebook-auth',
+        'django_facebook_auth',
     ],
 )
