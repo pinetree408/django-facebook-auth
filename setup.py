@@ -20,7 +20,7 @@ setup(
     license='MIT License',
 
     install_requires=(
-        'Django',
+        'Django==1.7',
     ),
 
     classifiers=[
