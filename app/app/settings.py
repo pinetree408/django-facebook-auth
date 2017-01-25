@@ -1,5 +1,5 @@
 """
-Django settings for Django_Facebook_Auth project.
+Django settings for app project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.7/topics/settings/
@@ -36,7 +36,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Auth_Login',
+    'django_facebook_auth',
+    'demo',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -49,9 +50,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'Django_Facebook_Auth.urls'
+ROOT_URLCONF = 'app.urls'
 
-WSGI_APPLICATION = 'Django_Facebook_Auth.wsgi.application'
+WSGI_APPLICATION = 'app.wsgi.application'
 
 
 # Database
@@ -85,11 +86,10 @@ STATIC_URL = '/static/'
 
 #Facebook
 AUTHENTICATION_BACKENDS = (
-		'Auth_Login.backends.FacebookBackend',
+		'django_facebook_auth.backends.FacebookBackend',
 		)
 LOGIN_URL = '/login/'
 
-import facebookinfo
-FACEBOOK_APP_ID = facebookinfo.FACEBOOK_APP_ID
-FACEBOOK_APP_SECRET = facebookinfo.FACEBOOK_APP_SECRET
+FACEBOOK_APP_ID = 704150899695055
+FACEBOOK_APP_SECRET = '6632df15dddaafb2a65043f1b0871655'
 FACEBOOK_REDIRECT_URI = 'http://localhost:8000/login/'

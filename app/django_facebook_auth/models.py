@@ -37,20 +37,19 @@ class FacebookSession(models.Model):
         import urllib
         import json
 
-        url = 'https://graph.facebook.com/%s' % (object_id)
-
+        url = 'https://graph.facebook.com/v2.3/%s' % (object_id)
         if connection_type:
             url += '/%s' % (connection_type)
-            params = {'access_token': self.access_token}
 
-            if metadata:
-                params['metadata'] = 1
+	params = {'access_token': self.access_token}
+        if metadata:
+            params['metadata'] = 1
 
-            url += '?' + urllib.urlencode(params)
-            response = json.loads(urllib2.urlopen(url).read())
+        url += '?' + urllib.urlencode(params)
+        response = json.loads(urllib2.urlopen(url).read())
 
-            if 'error' in response:
-                error = response['error']
-                raise FacebookSessionError(error['type'], error['message'])
+        if 'error' in response:
+            error = response['error']
+            raise FacebookSessionError(error['type'], error['message'])
 
-            return response
+        return response

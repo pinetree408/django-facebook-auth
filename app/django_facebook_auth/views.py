@@ -1,33 +1,23 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib import auth
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth import logout
 from models import FacebookSession
 from django.conf import settings
 import cgi
 import urllib
 
 
-@login_required
-def index(request):
-    facebook_session = FacebookSession.objects.get(user_id=request.user.pk)
-    user = facebook_session.user
-    profile = facebook_session.query('me')
-    context = {
-        'username': user.username,
-        'facebookid': profile['id']
-    }
+class FacebookLoginMixin(object):
+    template_name = "login.html"
+    login_settings = settings
+    redirect_path = '/'
 
-    return render(request, 'index.html', context)
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated():
+            return HttpResponseRedirect(self.redirect_path)
+	return super(FacebookLoginMixin, self).dispatch(request, *args, **kwargs)
 
-
-def login(request):
-
-    if request.user.is_authenticated():
-        return HttpResponseRedirect('/')
-
-    if request.GET:
+    def get(self, request, *args, **kwargs):
 
         if 'code' in request.GET:
             args = {
@@ -41,7 +31,8 @@ def login(request):
             response = cgi.parse_qs(urllib.urlopen(url).read())
             access_token = response['access_token'][0]
             expires = response['expires'][0]
-            facebook_session = FacebookSession.objects.get_or_create(access_token=access_token)[0]
+
+	    facebook_session = FacebookSession.objects.get_or_create(access_token=access_token)[0]
             facebook_session.expires = expires
             facebook_session.save()
             user = auth.authenticate(token=access_token)
@@ -49,15 +40,9 @@ def login(request):
             if user:
                 if user.is_active:
                     auth.login(request, user)
-                    return HttpResponseRedirect('/')
+                    return HttpResponseRedirect(self.redirect_path)
 
-    context = {
-        'settings': settings
-    }
-
-    return render(request, 'login.html', context)
-
-
-def logout_page(request):
-    logout(request)
-    return HttpResponseRedirect('/')
+	context = {
+	    'settings': self.login_settings
+	}
+        return render(request, self.template_name, context)
