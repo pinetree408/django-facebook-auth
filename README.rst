@@ -9,7 +9,7 @@ Configuration
 -------------
 Settings
 ''''''''
-1. Add django_facebook_auth to INSTALLED_APPS::
+1. Add django_facebook_auth to INSTALLED_APPS
    ::
 
        INSTALLED_APPS = (
