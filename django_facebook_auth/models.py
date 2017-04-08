@@ -37,11 +37,14 @@ class FacebookSession(models.Model):
         import urllib
         import json
 
-        url = 'https://graph.facebook.com/v2.3/%s' % (object_id)
+        url = 'https://graph.facebook.com/v2.8/%s' % (object_id)
         if connection_type:
             url += '/%s' % (connection_type)
 
-	params = {'access_token': self.access_token}
+	params = {
+                'access_token': self.access_token,
+                'fields': 'name,email,first_name,last_name'
+                }
         if metadata:
             params['metadata'] = 1
 

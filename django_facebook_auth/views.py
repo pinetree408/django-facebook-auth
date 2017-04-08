@@ -3,7 +3,8 @@ from django.http import HttpResponseRedirect
 from django.contrib import auth
 from models import FacebookSession
 from django.conf import settings
-import cgi
+
+import json
 import urllib
 
 
@@ -28,7 +29,7 @@ class FacebookLoginMixin(object):
             }
             url = 'https://graph.facebook.com/oauth/access_token?'
             url = url + urllib.urlencode(args)
-            response = cgi.parse_qs(urllib.urlopen(url).read())
+            response = json.loads(urllib.urlopen(url))
             access_token = response['access_token'][0]
             expires = response['expires'][0]
 

@@ -9,6 +9,11 @@ Configuration
 -------------
 Settings
 ''''''''
+0. Install django_facebook_auth_helper
+   ::
+
+       pip install django_facebook_auth_helper
+
 1. Add django_facebook_auth to INSTALLED_APPS
    ::
 
@@ -26,6 +31,12 @@ Settings
 3. Add facebook settings to settings.py
    ::
 
-       FACEBOOK_APP_ID = 704150899695055
-       FACEBOOK_APP_SECRET = '6632df15dddaafb2a65043f1b0871655'
+       FACEBOOK_APP_ID = YOUR_APP_ID
+       FACEBOOK_APP_SECRET = 'YOUR_APP_SECRET'
        FACEBOOK_REDIRECT_URI = 'http://localhost:8000/login/'
+
+4. Import django_facebook_auth modules to views.py
+   ::
+
+       from django_facebook_auth.views import FacebookLoginMixin
+       from django_facebook_auth.models import FacebookSession
