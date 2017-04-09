@@ -1,10 +1,12 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+from django.contrib.auth.decorators import login_required
+from facebook_login.views import ExampleUserDetail, ExampleLogin, ExampleLogout
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'example.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-
     url(r'^admin/', include(admin.site.urls)),
+    # Facebook login urls
+    url(r'^$', login_required(ExampleUserDetail.as_view()), name='user_detail'),
+    url(r'^login/', ExampleLogin.as_view(), name='login'),
+    url(r'^logout/', ExamlpeLogout.as_view(), name='logout_page'),
 )
