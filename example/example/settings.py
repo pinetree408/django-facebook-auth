@@ -85,6 +85,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Facebook login settings
+AUTHENTICATION_BACKENDS = (
+    'django_facebook_auth.backends.FacebookBackend',
+)
+
 LOGIN_URL = '/login/'
 
 FACEBOOK_APP_ID = YOUR_APP_ID

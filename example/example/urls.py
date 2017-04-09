@@ -8,5 +8,5 @@ urlpatterns = patterns('',
     # Facebook login urls
     url(r'^$', login_required(ExampleUserDetail.as_view()), name='user_detail'),
     url(r'^login/', ExampleLogin.as_view(), name='login'),
-    url(r'^logout/', ExamlpeLogout.as_view(), name='logout_page'),
+    url(r'^logout/', ExampleLogout.as_view(), name='logout_page'),
 )

@@ -29,9 +29,9 @@ class FacebookLoginMixin(object):
             }
             url = 'https://graph.facebook.com/oauth/access_token?'
             url = url + urllib.urlencode(args)
-            response = json.loads(urllib.urlopen(url))
-            access_token = response['access_token'][0]
-            expires = response['expires'][0]
+            response = json.loads(urllib.urlopen(url).read())
+            access_token = response['access_token']
+            expires = response['expires_in']
 
 	    facebook_session = FacebookSession.objects.get_or_create(access_token=access_token)[0]
             facebook_session.expires = expires
