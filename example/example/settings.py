@@ -83,3 +83,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Facebook login settings
+LOGIN_URL = '/login/'
+
+FACEBOOK_APP_ID = YOUR_APP_ID
+FACEBOOK_APP_SECRET = 'YOUR_APP_SECRET'
+FACEBOOK_REDIRECT_URI = 'http://localhost:8000/login/'
