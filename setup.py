@@ -18,9 +18,9 @@ setup(
     author='Sangyoon Lee',
     author_email='pinetree408@gmail.com',
     license='MIT License',
-    install_requires=(
-        'Django==1.7',
-    ),
+    install_requires=[
+        'Django>=2.2.24',
+    ],
     classifiers=[
         'Framework :: Django',
         'Intended Audience :: Developers',
